@@ -31,5 +31,5 @@ var reverseListTwo = function (curr, prev = null) {
     curr.next = prev;
     return reverseListTwo(next, curr)
 };
-/*The Time Complexity of Approach 1 is O(n), one pass required.
-/*The Space Complexity of Approach 1 is O(1). We need three variables, regardless of length of Linked List. */
+/*The Time Complexity of Approach 1 is O(n), we need to make n recursive calls, one call for every node in list.
+/*The Space Complexity of Approach 1 is O(n). Need stack frame for every node in Linked List. */
