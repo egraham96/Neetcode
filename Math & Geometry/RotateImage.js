@@ -33,3 +33,8 @@ var rotate = function(M) {
         }
     }
 };
+
+/*Time complexity: O(R*C*8*len(str)). 
+All the cells will be visited and traversed in all 8 directions, where R and C is side of matrix so time complexity is O(R*C).
+Auxiliary Space: O(1). 
+As no extra space is needed.*/
