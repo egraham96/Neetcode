@@ -33,7 +33,7 @@ var isPalindromeTwo = function(s) {
     return true
 };
 isPalindromeTwo("A man, a plan, a canal: Panama")
-/*The Time Complexity of Approach 2 is ?*/
-/*The Space Complexity of Approach 2 is ? */
+/*The Time Complexity of Approach 2 is O(n), where n is the length of s*/
+/*The Space Complexity of Approach 2 is O(1), only using two variables regardless of size of s */
 
 
