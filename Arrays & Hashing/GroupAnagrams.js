@@ -1,20 +1,23 @@
 
 
-//Approach 1: Using Objects
+//Approach 1: No Map, Object or Set (Most Time Optimal)
 var groupAnagrams = function(strs) {
-    let obj = {};
+    let res = {};
     for (let str of strs) {
-        let letters = str.split("").sort().join("");
-        obj[letters] ? obj[letters].push(str) : obj[letters] = [str];
+        let count = new Array(26).fill(0);
+        for (let char of str) count[char.charCodeAt()-97]++;
+        let key = count.join("#");
+        res[key] ? res[key].push(str) : res[key] = [str];
     }
-    return Object.values(obj);
+    return Object.values(res);
 };
 groupAnagrams(["eat","tea","tan","ate","nat","bat"])
-/*The Time Complexity of Approach 1 is O(n*klog(k)), where n is the length of input array and k is the maximum length of a string in input array */
-/*The Space Complexity of Approach 1 is O(n) */
+/* Time Complexity: O(n*k) where n is the size of input array and k is the maximum length of string in the input array.
+Counting each string is linear in the size of the string, and we count every string.*/
+/* Space Complexity: O(nk), the total information stored in the results object.*/
 
 
-//Approach 2: Using Map
+//Approach 3: Using Map
 var groupAnagramsTwo = function(strs) {
     let m = new Map();
     for (let str of strs) {
@@ -25,48 +28,5 @@ var groupAnagramsTwo = function(strs) {
     return Array.from(m.values());
 };
 groupAnagramsTwo(["eat","tea","tan","ate","nat","bat"])
-/*The Time Complexity of Approach 2 is O(n*klog(k)) , where n is the length of input array and k is the maximum length of a string in input array */
-/*The Space Complexity of Approach 2 is O(n) */
-
-
-//Approach 3: No Map, Object or Set
-var groupAnagramsThree = function(strs) {
-    let res = {};
-    for (let str of strs) {
-        let count = new Array(26).fill(0);
-        for (let char of str) count[char.charCodeAt()-97]++;
-        let key = count.join("#");
-        res[key] ? res[key].push(str) : res[key] = [str];
-    }
-    return Object.values(res);
-};
-groupAnagramsThree(["eat","tea","tan","ate","nat","bat"])
-/* Time Complexity: O(n*k) where n is the size of input array and k is the maximum length of string in input array
-/* Space Complexity: O(n)
-
-
-//My First Attempt. Works, but is not most efficient. Also, I do not know Big O for Run Time Complexity or Space Complexity.
-/*var groupAnagrams = function(strs) {
-let newMap= new Map()
-strs.forEach(word => {
-    var split= word.split("")
-    var sorted= split.sort().join("")
-    console.log(sorted)
-    if (newMap.has(sorted)){
-        var value=newMap.get(sorted)
-        value.push(word)
-        
-    } else {
-        var anagrams=[]
-        anagrams.push(word)
-        newMap.set(sorted, anagrams)}
-})
-var newArray=[]
-var values= newMap.values()
-console.log(values)
-for(var entry of values){newArray.push(entry)}
-return newArray;
-};
-groupAnagrams(["eat","tea","tan","ate","nat","bat"])
-/*The Time Complexity of this approach is ? */
-/*The Space Complexity of this approach is ? */
+/*The Time Complexity of Approach 3 is O(n*klog(k)) , where n is the length of input array and k is the maximum length of a string in input array */
+/*The Space Complexity of Approach 3 is O(n) */

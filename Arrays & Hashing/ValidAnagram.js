@@ -19,7 +19,7 @@ var isAnagram = function (s, t) {
 };
 isAnagram("anagram", "nagaram")
 /*The Time Complexity of Approach 1 is O(n), where n is the length of both s and t. */
-/*The Space Complexity of Approach 1 is O(1) in the case that our map size is limited, worst case O(n) space in the case that we're dealing with unlimited map (for instance when we have arbitrary long strings, objects etc. as input collections elements)*/
+/*The Space Complexity of Approach 1 is O(n)/O(1) in the case that our map size is limited, worst case O(n) space in the case that we're dealing with unlimited map (for instance when we have arbitrary long strings as inputs)*/
 
 
 //Approach 2: Using Array as Bucket
@@ -40,8 +40,8 @@ var isAnagramTwo = function(s, t) {
     return true;
 };
 isAnagramTwo("anagram", "nagaram")
-/*The Time Complexity of Approach 2 is O(n), where n is the length of both s and t (But shouldn't it be O(n^2) because we are looping over strings t and s?) */
-/*The Space Complexity of Approach 2 is ? */
+/*The Time Complexity of Approach 2 is O(n), where n is the length of both s and t.
+/*The Space Complexity of Approach 2 is O(1). Although we do use extra space, the space complexity is O(1) because the table's size stays constant (26 letters in lowercase alphabet) no matter how large n is.
 
 
 //Approach 3: No Map, Set, Array or Object. Uses Sort.
